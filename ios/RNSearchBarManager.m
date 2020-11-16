@@ -153,6 +153,8 @@ RCT_EXPORT_METHOD(blur:(nonnull NSNumber *)reactTag)
          
          if ([searchBar isKindOfClass:[RNSearchBar class]]) {
              [searchBar endEditing:true];
+             UIButton *cancelButton = (UIButton *)[searchBar valueForKey:@"cancelButton"];
+             [cancelButton setEnabled:YES];
          } else {
              RCTLogError(@"Cannot blur: %@ (tag #%@) is not RNSearchBar", searchBar, reactTag);
          }
@@ -181,6 +183,8 @@ RCT_EXPORT_METHOD(unFocus:(nonnull NSNumber *)reactTag)
          
          if ([searchBar isKindOfClass:[RNSearchBar class]]) {
              [searchBar resignFirstResponder];
+             UIButton *cancelButton = (UIButton *)[searchBar valueForKey:@"cancelButton"];
+             [cancelButton setEnabled:YES];
          } else {
              RCTLogError(@"Cannot unFocus: %@ (tag #%@) is not RNSearchBar", searchBar, reactTag);
          }
